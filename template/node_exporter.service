@@ -1,0 +1,10 @@
+[Unit]
+Description = node_exporter deamon
+
+[Service]
+ExecStart = /bin/node_exporter
+ExecReload = bin/kill -HUP $MAINPID
+Type = simple
+
+[Install]
+WantedBy = multi-user.target
