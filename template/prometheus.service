@@ -4,9 +4,9 @@ Description = prometheus server deamon
 [Service]
 EnvironmentFile = /usr/local/bin/prometheus/env
 ExecStart = /bin/prometheus $OPTIONS
-ExecStop = kill $MAINPID
+ExecStop = /bin/kill $MAINPID
 # ExecReload = curl -X POST http://localhost:9090/-/reload
-ExecReload = bin/kill -HUP $MAINPID
+ExecReload = /bin/kill -HUP $MAINPID
 Type = simple
 
 [Install]
