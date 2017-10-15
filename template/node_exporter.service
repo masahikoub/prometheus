@@ -1,5 +1,5 @@
 [Unit]
-Description = node_exporter deamon
+Description = prometheus node_exporter deamon
 
 [Service]
 ExecStart = /bin/node_exporter
