@@ -3,7 +3,7 @@ Description = prometheus node_exporter deamon
 
 [Service]
 ExecStart = /bin/node_exporter
-ExecStop = /bin/kill $MAINPID
+ExecStop = /bin/kill -15 $MAINPID
 ExecReload = /bin/kill -HUP $MAINPID
 Type = simple
 
