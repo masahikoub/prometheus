@@ -1,0 +1,25 @@
+---
+
+- name: Download
+  unarchive:
+    src={{ url }}
+    dest=/usr/local/bin
+    copy=no
+
+- name: create synbolic link
+  file: src=/usr/local/bin/{{ name }}/prometheus dest=/usr/local/bin/prometheus state=link
+
+- name: create /usr/local/bin/prometheus/prometheus.yml
+  template: src=templates/prometheus.yml dest=/usr/local/bin/{{ name }} mode=0755 backup=yes
+
+- name: create prometheus.service
+  template: src=templates/prometheus.service dest=/etc/systemd/system/
+
+- name: create prometheus.service option file
+  template: src=templates/env dest=/usr/local/bin/{{ name }} mode=0755
+
+- name: enable prometheus.service and start
+  systemd:
+    name: pometheus.serice
+    state: started
+    enabled: True
