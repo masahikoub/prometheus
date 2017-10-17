@@ -1,0 +1,12 @@
+- hosts: server
+  user: root
+
+  roles:
+  - server
+
+
+- hosts: client
+  user: root
+
+  roles:
+  - client
