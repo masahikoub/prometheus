@@ -1,0 +1,12 @@
+[Unit]
+Description = Prometheus Server deamon
+
+[Service]
+EnvironmentFile = /usr/local/bin/{{ name }}/env
+ExecStart = /usr/local/bin/prometheus $OPTIONS
+ExecStop = /bin/kill -15 $MAINPID
+ExecReload = /bin/kill -HUP $MAINPID
+Type = simple
+
+[Install]
+WantedBy = multi-user.target
