@@ -1,0 +1,19 @@
+---
+
+- name: Download
+  unarchive:
+    src={{ url }}
+    dest=/usr/local/bin
+    copy=no
+
+- name: create synbolic link
+  file: src=/usr/local/bin/{{ name }}/node_exporter dest=/usr/local/bin/node_exporter state=link
+
+- name: create node_exporter.service
+  template: src=templates/node_exporter.service dest=/etc/systemd/system/
+
+- name: enable node_exporter.service and start
+  systemd:
+    name: node_exporter.service
+    state: started
+    enabled: True

@@ -20,6 +20,6 @@
 
 - name: enable prometheus.service and start
   systemd:
-    name: pometheus.serice
+    name: prometheus.service
     state: started
     enabled: True
