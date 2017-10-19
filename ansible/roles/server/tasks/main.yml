@@ -34,4 +34,4 @@
     name: grafana-server
     daemon-reload: yes
     state: started
-    enabled: True:
+    enabled: True
