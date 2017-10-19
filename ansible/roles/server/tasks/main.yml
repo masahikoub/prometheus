@@ -23,3 +23,15 @@
     name: prometheus.service
     state: started
     enabled: True
+
+- name: install grafana rpm from a remote repo
+  yum:
+    name: https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-4.5.2-1.x86_64.rpm
+    state: present
+
+- name: enable grafana-server
+  systemd:
+    name: grafana-server
+    daemon-reload: yes
+    state: started
+    enabled: True:
