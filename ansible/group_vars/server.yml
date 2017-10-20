@@ -1,3 +1,3 @@
-version: '1.8.0'
-name: prometheus-{{ version }}.linux-amd64
-url: "https://github.com/prometheus/prometheus/releases/download/v{{ version }}/{{ name }}.tar.gz"
+version_prom: '1.8.0'
+name_prom: prometheus-{{ version_prom }}.linux-amd64
+url_prom: "https://github.com/prometheus/prometheus/releases/download/v{{ version_prom }}/{{ name_prom }}.tar.gz"

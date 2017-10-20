@@ -1,3 +1,3 @@
-version: '0.15.0'
-name: node_exporter-{{ version }}.linux-amd64
-url: "https://github.com/prometheus/node_exporter/releases/download/v{{ version }}/{{ name }}.tar.gz"
+version_node: '0.15.0'
+name_node: node_exporter-{{ version_node }}.linux-amd64
+url_node: "https://github.com/prometheus/node_exporter/releases/download/v{{ version_node }}/{{ name_node }}.tar.gz"
