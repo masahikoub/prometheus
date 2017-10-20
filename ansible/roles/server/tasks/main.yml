@@ -16,10 +16,10 @@
   template: src=templates/prometheus.service dest=/etc/systemd/system/
 
 - name: create prometheus.service option file
-  template: src=templates/env dest=/usr/local/bin/{{ name_prom}} mode=0755
+  template: src=templates/env dest=/usr/local/bin/{{ name_prom }} mode=0755
 
 - name: create prometheus.rules
-  template: src=templates/prometheus.rules dest=/usr/local/bin/{{ name_prom}} mode=0755
+  template: src=templates/prometheus.rules dest=/usr/local/bin/{{ name_prom }} mode=0755
 
 - name: enable prometheus.service and start
   systemd:
