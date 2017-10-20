@@ -8,8 +8,8 @@ ALERT InstanceDown
     severity="page"
   }
   ANNOTATIONS {
-    runbook = "Instance {{$labels.instance}} down",
-    description = "{{$labels.instance}} of job {{$labels.job}} has been down for more than 2 minutes.",
+    runbook = "Instance {{\$labels.instance}} down",
+    description = "{{\$labels.instance}} of job {{\$labels.job}} has been down for more than 2 minutes.",
     runbook = "http://sinsip.com/xm.jpg"
   }
 
