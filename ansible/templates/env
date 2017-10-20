@@ -1,2 +1,2 @@
 OPTIONS_PROM="-config.file=/usr/local/bin/prometheus-1.8.0.linux-amd64/prometheus.yml -web.console.libraries=/usr/local/bin/prometheus-1.8.0.linux-amd64/console_libraries -web.console.templates=/usr/local/bin/prometheus-1.8.0.linux-amd64/consoles"
-OPTIONS_NODE="-collector.textfile.directory=/var/log
+OPTIONS_NODE="--collector.textfile.directory=/var/log
