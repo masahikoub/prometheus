@@ -46,6 +46,11 @@ scrape_configs:
         labels:
           group:  'canary'
 
+  - job_name: 'discovered_node'
+    dns_sd_configs:
+      - names:
+          - '_demo-node._tcp.prometheus.io'
+
 # Alerting specifies settings related to the Alertmanager.
 #alerting:
 #  alert_relabel_configs:
