@@ -7,7 +7,7 @@
     copy=no
 
 - name: rename prometheus-server
-  commond: mv /usr/local/{{ name_prom }} /usr/local/prometheus-server
+  command: mv /usr/local/{{ name_prom }} /usr/local/prometheus-server
 
 - name: create synbolic link for prometheus server
   file: src=/usr/local/prometheus-server/prometheus dest=/usr/local/bin/prometheus state=link
