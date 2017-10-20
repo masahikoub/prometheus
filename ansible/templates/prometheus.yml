@@ -30,6 +30,20 @@ scrape_configs:
     static_configs:
       - targets: ['192.168.100.20:9100']
 
+  - job_name: 'example-random'
+
+    # override the global default and scrate targets from this job every 5 seconds.
+    scrape_interal: 5s
+
+    static_configs:
+      - targets: ['192.168.100.10:8080', '192.168.100.10:8081']
+        labels:
+          group:  'production'
+
+      - targets: ['192.168.100.10:8082']
+        labels:
+          group:  'canary'
+
 # Alerting specifies settings related to the Alertmanager.
 #alerting:
 #  alert_relabel_configs:
