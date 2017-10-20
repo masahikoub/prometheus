@@ -10,7 +10,7 @@
   file: src=/usr/local/bin/{{ name_prom }}/prometheus dest=/usr/local/bin/prometheus state=link
 
 - name: create /usr/local/bin/prometheus/prometheus.yml
-  template: src=templates/prometheus.yml dest=/usr/local/bin/{{ name_prom }} mode=0755 backup=yes
+  template: src=templates/prometheus.yml dest=/usr/local/bin/{{ name_prom }} mode=0755
 
 - name: create prometheus.service
   template: src=templates/prometheus.service dest=/etc/systemd/system/
