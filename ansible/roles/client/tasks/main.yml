@@ -12,7 +12,7 @@
 - name: create node_exporter.service
   template: src=templates/node_exporter.service dest=/etc/systemd/system/
 
- - name: create node_exporter.service option file
+- name: create node_exporter.service option file
   template: src=templates/env dest=/usr/local/bin/{{ name_node }} mode=0755
 
 - name: enable node_exporter.service and start
