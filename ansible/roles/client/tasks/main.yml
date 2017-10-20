@@ -3,17 +3,17 @@
 - name: Download
   unarchive:
     src={{ url_node }}
-    dest=/usr/local/bin
+    dest=/usr/local/
     copy=no
 
 - name: create synbolic link
-  file: src=/usr/local/bin/{{ name_node }}/node_exporter dest=/usr/local/bin/node_exporter state=link
+  file: src=/usr/local/{{ name_node }}/node_exporter dest=/usr/local/bin/node_exporter state=link
 
 - name: create node_exporter.service
   template: src=templates/node_exporter.service dest=/etc/systemd/system/
 
 - name: create node_exporter.service option file
-  template: src=templates/env dest=/usr/local/bin/{{ name_node }} mode=0755
+  template: src=templates/env dest=/usr/local/node_exporter mode=0755
 
 - name: enable node_exporter.service and start
   systemd:
