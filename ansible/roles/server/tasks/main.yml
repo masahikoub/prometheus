@@ -1,12 +1,12 @@
 ---
 
-- name: Download
+- name: Download Prometheus server
   unarchive:
     src={{ url }}
     dest=/usr/local/bin
     copy=no
 
-- name: create synbolic link
+- name: create synbolic link for prometheus server
   file: src=/usr/local/bin/{{ name }}/prometheus dest=/usr/local/bin/prometheus state=link
 
 - name: create /usr/local/bin/prometheus/prometheus.yml
@@ -21,7 +21,7 @@
 - name: enable prometheus.service and start
   systemd:
     name: prometheus.service
-    state: started
+    state: restarted
     enabled: True
 
 - name: install grafana rpm from a remote repo
