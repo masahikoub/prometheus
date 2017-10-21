@@ -6,8 +6,16 @@
     dest=/usr/local/
     copy=no
 
-- name: rename prometheus-server
-  command: mv /usr/local/{{ name_prom }} /usr/local/prometheus-server
+- name: copy prometheus-server
+  copy:
+    src: /usr/local/{{ name_prom }}/
+    dest: /usr/local/prometheus-server
+    force: no
+
+- name: remove unarchived file
+  file:
+    path: /usr/local/{{ name_prom }}
+    state: absent
 
 - name: create synbolic link for prometheus server
   file: src=/usr/local/prometheus-server/prometheus dest=/usr/local/bin/prometheus state=link

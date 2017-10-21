@@ -3,7 +3,7 @@ Description = Prometheus Server deamon
 
 [Service]
 EnvironmentFile = /usr/local/prometheus-server/env
-ExecStart = /user/local/prometheus-server/prometheus $OPTIONS_PROM
+ExecStart = /usr/local/prometheus-server/prometheus $OPTIONS_PROM
 ExecStop = /bin/kill -15 $MAINPID
 ExecReload = /bin/kill -HUP $MAINPID
 Type = simple
