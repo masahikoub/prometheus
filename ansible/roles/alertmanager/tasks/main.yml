@@ -1,0 +1,45 @@
+---
+
+- name: Download {{ name_alert }}
+  unarchive:
+    src={{ url_alert }}
+    dest=/usr/local/
+    copy=no
+
+- name: copy {{ name_alert }}
+  copy:
+    src: /usr/local/{{ name_alert }}/
+    dest: /usr/local/alertmanager
+    force: no
+
+- name: remove unarchived file
+  file:
+    path: /usr/local/{{ name_alert }}
+    state: absent
+
+- name: create synbolic link for alertmanager
+  file: src=/usr/local/alertmanager/alertmanager dest=/usr/local/bin/alertmanager state=link
+
+- name: create simple.yml
+  template: src=templates/simple.yml dest=/usr/local/alertmanager mode=0755
+
+- name: create alertmanager.service
+  template: src=templates/alertmanager.service dest=/etc/systemd/system/
+
+- name: enable alertmanager.service and start
+  systemd:
+    name: alertmanager.service
+    state: restarted
+    enabled: True
+
+- name: install grafana rpm from a remote repo
+  yum:
+    name: https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-4.5.2-1.x86_64.rpm
+    state: present
+
+- name: enable grafana-server
+  systemd:
+    name: grafana-server
+    daemon-reload: yes
+    state: started
+    enabled: True

@@ -1,0 +1,3 @@
+version_alert: '0.9.1'
+name_alert: alertmanager-{{ version_node }}.linux-amd64
+url_alert: "https://github.com/prometheus/alertmanager/releases/download/v{{ version_alert }}/{{ name_alert }}.tar.gz"
