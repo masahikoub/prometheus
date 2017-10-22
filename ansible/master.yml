@@ -1,12 +1,14 @@
 - hosts: server
   user: root
-
   roles:
   - server
 
-
 - hosts: client
   user: root
-
   roles:
   - client
+
+- hosts: alertmanager
+  user: root
+  roles:
+  - alertmanager
