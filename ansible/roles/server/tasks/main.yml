@@ -17,6 +17,14 @@
     path: /usr/local/{{ name_prom }}
     state: absent
 
+- name: chmod bin
+  file:
+   path: /usr/local/prometheus-server/{{ item }}
+   mode: 0755
+   with_items:
+     - prometheus
+     - promtool
+
 - name: create synbolic link for prometheus server
   file: src=/usr/local/prometheus-server/prometheus dest=/usr/local/bin/prometheus state=link
 

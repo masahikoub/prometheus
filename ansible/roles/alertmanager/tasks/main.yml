@@ -17,6 +17,11 @@
     path: /usr/local/{{ name_alert }}
     state: absent
 
+- name: chmod bin
+  file:
+   path: /usr/local/alertmanager/alertmanager
+   mode: 0755
+
 - name: create synbolic link for alertmanager
   file: src=/usr/local/alertmanager/alertmanager dest=/usr/local/bin/alertmanager state=link
 
