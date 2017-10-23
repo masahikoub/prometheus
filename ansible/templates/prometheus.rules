@@ -8,19 +8,9 @@ ALERT InstanceDown
     severity="page"
   }
   ANNOTATIONS {
-    runbook = "Instance {{ '{{$' }}labels.instancei{{ '}}' }} down",
-    description = "{{ '{{$' }}labels.instance{{ '}}' }} of job {{ '{{$' }}labels.job{{ '}}' }} has been down for more than 2 minutes.",
+    summary = "Instance {{ '{{ $' }}labels.instancei{{ '}}' }} down",
+    description = "{{ '{{ $' }}labels.instance{{ '}}' }} of job {{ '{{ $' }}labels.job{{ '}}' }} has been down for more than 2 minutes.",
     runbook = "http://sinsip.com/xm.jpg"
-  }
-
-# Alert for any instance that is unreachable for >5 minutes.
-ALERT InstanceDown
-  IF up == 0
-  FOR 5m
-  LABELS { severity = "page" }
-  ANNOTATIONS {
-    summary = "Instance {{ $labels.instance }} down",
-    description = "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.",
   }
 
 # Alert for any instance that have a median request latency >1s.
@@ -28,6 +18,6 @@ ALERT APIHighRequestLatency
   IF api_http_request_latencies_second{quantile="0.5"} > 1
   FOR 1m
   ANNOTATIONS {
-    summary = "High request latency on {{ $labels.instance }}",
-    description = "{{ $labels.instance }} has a median request latency above 1s (current value: {{ $value }}s)",
+    summary = "High request latency on {{ '{{ $' }}labels.instance {{ '}}' }}",
+    description = "{{ '{{ $' }}labels.instance {{ '}}' }} has a median request latency above 1s (current value: {{ '{{ $' }}value {{ '}}' }}s)",
   }
