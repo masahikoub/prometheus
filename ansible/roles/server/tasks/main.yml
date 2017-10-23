@@ -19,11 +19,13 @@
 
 - name: chmod bin
   file:
-   path: /usr/local/prometheus-server/{{ item }}
+   path: /usr/local/prometheus-server/prometheus
    mode: 0755
-   with_items:
-     - prometheus
-     - promtool
+
+- name: chmod bin
+  file:
+   path: /usr/local/prometheus-server/promtool
+   mode: 0755
 
 - name: create synbolic link for prometheus server
   file: src=/usr/local/prometheus-server/prometheus dest=/usr/local/bin/prometheus state=link
