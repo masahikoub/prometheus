@@ -1,3 +1,3 @@
-OPTIONS_PROM="-config.file=/usr/local/prometheus-server/prometheus.yml -web.console.libraries=/usr/local/prometheus-server/console_libraries -web.console.templates=/usr/local/prometheus-server/consoles -alertmaneger.url=http://localhost:9093"
+OPTIONS_PROM="-config.file=/usr/local/prometheus-server/prometheus.yml -web.console.libraries=/usr/local/prometheus-server/console_libraries -web.console.templates=/usr/local/prometheus-server/consoles -alertmanager.url=http://localhost:9093"
 OPTIONS_NODE="--collector.textfile.directory=/var/log"
 OPTIONS_ALERT="-config.file=/usr/local/alertmanager/alertmanager.yml"
