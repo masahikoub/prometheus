@@ -1,0 +1,12 @@
+[Unit]
+Description = Alertmanager deamon
+
+[Service]
+EnvironmentFile = /usr/local/alertmanager/env
+ExecStart = /usr/local/alertmanager/alertmanager $OPTIONS_ALERT
+ExecStop = /bin/kill -15 $MAINPID
+ExecReload = /bin/kill -HUP $MAINPID
+Type = simple
+
+[Install]
+WantedBy = multi-user.target

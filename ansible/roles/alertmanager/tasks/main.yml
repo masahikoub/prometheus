@@ -20,8 +20,8 @@
 - name: create synbolic link for alertmanager
   file: src=/usr/local/alertmanager/alertmanager dest=/usr/local/bin/alertmanager state=link
 
-- name: create simple.yml
-  template: src=templates/simple.yml dest=/usr/local/alertmanager mode=0755
+- name: create config
+  template: src=templates/alertmanager.yml dest=/usr/local/alertmanager mode=0755
 
 - name: create alertmanager.service
   template: src=templates/alertmanager.service dest=/etc/systemd/system/
@@ -30,16 +30,4 @@
   systemd:
     name: alertmanager.service
     state: restarted
-    enabled: True
-
-- name: install grafana rpm from a remote repo
-  yum:
-    name: https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-4.5.2-1.x86_64.rpm
-    state: present
-
-- name: enable grafana-server
-  systemd:
-    name: grafana-server
-    daemon-reload: yes
-    state: started
     enabled: True
