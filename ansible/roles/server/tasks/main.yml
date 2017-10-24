@@ -36,6 +36,9 @@
 - name: create prometheus.service
   template: src=templates/prometheus.service dest=/etc/systemd/system/
 
+- name: create file_sd
+  template: src=templates/file_sd.yml dest=/usr/local/prometheus-server/
+
 - name: create prometheus.service option file
   template: src=templates/env dest=/usr/local/prometheus-server mode=0755
 
