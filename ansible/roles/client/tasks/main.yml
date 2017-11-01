@@ -3,19 +3,14 @@
 - name: Download node_exporter
   unarchive:
     src={{ url_node }}
-    dest=/usr/local/
+    dest=/tmp/
     copy=no
 
 - name: rename node_exporter directory
   copy:
-    src: /usr/local/{{ name_node }}/
+    src: /tmp/{{ name_node }}/
     dest: /usr/local/node_exporter
     force: no
-
-- name: remove unarchived file
-  file:
-    path: /usr/local/{{ name_node }}
-    state: absent
 
 - name: chmod node_exporter
   file:

@@ -3,19 +3,14 @@
 - name: Download {{ name_alert }}
   unarchive:
     src={{ url_alert }}
-    dest=/usr/local/
+    dest=/tmp/
     copy=no
 
 - name: copy {{ name_alert }}
   copy:
-    src: /usr/local/{{ name_alert }}/
+    src: /tmp/{{ name_alert }}/
     dest: /usr/local/alertmanager
     force: no
-
-- name: remove unarchived file
-  file:
-    path: /usr/local/{{ name_alert }}
-    state: absent
 
 - name: chmod bin
   file:
