@@ -21,10 +21,6 @@
   file:
    path: /usr/local/alertmanager/amtool
    mode: 0755
-
-- name: create synbolic link for alertmanager
-  file: src=/usr/local/alertmanager/alertmanager dest=/usr/local/bin/alertmanager state=link
-
 - name: create config
   template: src=templates/alertmanager.yml dest=/usr/local/alertmanager mode=0755
 
