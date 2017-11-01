@@ -22,9 +22,6 @@
    path: /usr/local/prometheus/promtool
    mode: 0755
 
-- name: create synbolic link for prometheus server
-  file: src=/usr/local/prometheus/prometheus dest=/usr/local/bin/prometheus/ state=link
-
 - name: create /usr/local/prometheus/prometheus.yml
   template: src=templates/prometheus.yml dest=/usr/local/prometheus/ mode=0755
 
