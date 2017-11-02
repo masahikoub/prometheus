@@ -2,8 +2,8 @@
 Description = Prometheus node_exporter deamon
 
 [Service]
-EnvironmentFile = /usr/local/node_exporter/env
-ExecStart = /usr/local/bin/node_exporter $OPTIONS_NODE
+#EnvironmentFile = /usr/local/node_exporter/env
+ExecStart = /usr/local/node_exporter/node_exporter $OPTIONS_NODE
 ExecStop = /bin/kill -15 $MAINPID
 ExecReload = /bin/kill -HUP $MAINPID
 Type = simple

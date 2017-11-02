@@ -3,47 +3,39 @@
 - name: Download Prometheus server
   unarchive:
     src={{ url_prom }}
-    dest=/usr/local/
+    dest=/tmp
     copy=no
 
 - name: copy prometheus-server
   copy:
-    src: /usr/local/{{ name_prom }}/
-    dest: /usr/local/prometheus-server
+    src: /tmp/{{ name_prom }}/
+    dest: /usr/local/prometheus
     force: no
 
-- name: remove unarchived file
-  file:
-    path: /usr/local/{{ name_prom }}
-    state: absent
-
 - name: chmod bin
   file:
-   path: /usr/local/prometheus-server/prometheus
+   path: /usr/local/prometheus/prometheus
    mode: 0755
 
 - name: chmod bin
   file:
-   path: /usr/local/prometheus-server/promtool
+   path: /usr/local/prometheus/promtool
    mode: 0755
-
-- name: create synbolic link for prometheus server
-  file: src=/usr/local/prometheus-server/prometheus dest=/usr/local/bin/prometheus state=link
 
 - name: create /usr/local/prometheus/prometheus.yml
-  template: src=templates/prometheus.yml dest=/usr/local/prometheus-server mode=0755
+  template: src=templates/prometheus.yml dest=/usr/local/prometheus/ mode=0755
 
 - name: create prometheus.service
   template: src=templates/prometheus.service dest=/etc/systemd/system/
 
 - name: create file_sd
-  template: src=templates/file_sd.yml dest=/usr/local/prometheus-server/
+  template: src=templates/file_sd.yml dest=/usr/local/prometheus/
 
 - name: create prometheus.service option file
-  template: src=templates/env dest=/usr/local/prometheus-server mode=0755
+  template: src=templates/env dest=/usr/local/prometheus/ mode=0755
 
 - name: create prometheus.rules
-  template: src=templates/prometheus.rules dest=/usr/local/prometheus-server mode=0755
+  template: src=templates/prometheus.rules dest=/usr/local/prometheus/ mode=0755
 
 - name: enable prometheus.service and start
   systemd:

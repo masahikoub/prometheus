@@ -10,12 +10,4 @@ receivers:
 - name: 'slack-notifications'
   slack_configs:
   - channel: '#prometheus'
-    text: "<https://prometheus.io/|wiki>"
-    fields:
-      - title: "Priority"
-      - value: "High"
-      - short: false
-    fields:
-      - title: "Assigned to"
-      - value: "Paul"
-      - short: false
+    text: "<https://prometheus.io/|link test>"

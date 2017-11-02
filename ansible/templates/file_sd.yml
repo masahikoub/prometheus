@@ -1,7 +1,14 @@
 - targets:
     - 192.168.2.95:31234
+  labels:
+    group: 'production' 
+
+- targets:
     - 192.168.2.96:32768
+  labels:
+    group: 'qa' 
+
+- targets:
     - 192.168.2.97:35395
   labels:
-    aaa: AAA
-    bbb: BBB
+    group: 'dev' 
